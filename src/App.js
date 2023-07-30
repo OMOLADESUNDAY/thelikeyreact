@@ -17,6 +17,7 @@ function App() {
         >
           Learn React
         </a>
+        <span className="material-icons-outlined">pie_chart</span>
       </header>
     </div>
   );
