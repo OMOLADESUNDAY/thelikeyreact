@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar'
 const Dashboard = () => {
     return (
         <>
-            <main>
+            <main className='container-scroller'>
                 <Header />
                 <Sidebar />
                 Dashboard

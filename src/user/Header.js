@@ -1,21 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '../images/logo.png';
+import { useAuth } from '../providers/Auth';
 import './user.css';
 
 const Header = () => {
+    const auth = useAuth();
     return (
         <>
             <nav className="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                 <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                    <a className="navbar-brand brand-logo d-flex" href="/dashboard" style="align-items: center;">
-                        <img src="/logo.png" alt="logo" style="width: 30px; height: 30px; margin-left: 20px; margin-right: 10px;" />
-                        <h4 style="font-family: monospace; font-weight: bold; margin: auto; margin-left: 0; margin-right: 30px;">
+                    <Link className="navbar-brand brand-logo d-flex" to="/dashboard" style={{ alignItems: 'center' }}>
+                        <img src={Logo} alt="logo" style={{ width: '30px', height: '30px', marginLeft: '20px', marginRight: '10px' }} />
+                        <h4 style={{ fontFamily: 'monospace', fontWeight: 'bold', margin: 'auto', marginLeft: '0', marginRight: '30px' }}>
                             THE LIKEY
                         </h4>
-                    </a>
-                    <a className="navbar-brand brand-logo-mini" href="/dashboard">
-                        <img src={Logo} alt="logo" style="width: 30px; height: 30px;" />
-                    </a>
+                    </Link>
+                    <Link className="navbar-brand brand-logo-mini" to="/dashboard">
+                        <img src={Logo} alt="logo" style={{ width: '30px', height: '30px' }} />
+                    </Link>
                 </div>
                 <div className="navbar-menu-wrapper d-flex align-items-stretch">
                     <button className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -33,7 +36,7 @@ const Header = () => {
                     </div>
                     <ul className="navbar-nav navbar-nav-right">
                         <li className="nav-item nav-profile dropdown">
-                            <a className="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <Link className="nav-link dropdown-toggle" id="profileDropdown" to="#" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div className="nav-profile-img">
                                     <img src="/assets/images/faces/face1.jpg" alt="image"/>
                                         <span className="availability-status online"></span>
@@ -45,27 +48,27 @@ const Header = () => {
                                         </b>
                                     </p>
                                 </div>
-                            </a>
+                            </Link>
                             <div className="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                                <a className="dropdown-item" href="/activities">
-                                    <i className="mdi mdi-cached me-2 text-info"></i> Activity Log </a>
-                                <a className="dropdown-item" href="/profile">
-                                    <i className="mdi mdi-account-convert me-2 text-success"></i> My Profile </a>
+                                <Link className="dropdown-item" to="/activities">
+                                    <i className="mdi mdi-cached me-2 text-info"></i> Activity Log </Link>
+                                <Link className="dropdown-item" to="/profile">
+                                    <i className="mdi mdi-account-convert me-2 text-success"></i> My Profile </Link>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="/sign-out">
-                                    <i className="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+                                <Link className="dropdown-item" to="/sign-out">
+                                    <i className="mdi mdi-logout me-2 text-primary"></i> Signout </Link>
                             </div>
                         </li>
                         <li className="nav-item d-none d-lg-block full-screen-link">
-                            <a className="nav-link">
+                            <Link className="nav-link">
                                 <i className="mdi mdi-fullscreen" id="fullscreen-button"></i>
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="nav-item nav-logout d-none d-lg-block">
-                            <a className="nav-link" href="/sign-out">
+                            <span className="nav-link" onClick={() => auth.logOut()}>
                                 <i className="mdi mdi-power"></i>
-                            </a>
+                            </span>
                         </li>
                     </ul>
                     <button className="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
