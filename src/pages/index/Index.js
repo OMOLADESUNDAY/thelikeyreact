@@ -7,7 +7,7 @@ const Index = () => {
         <>
             <div className='w-100 d-flex justify-content-evenly p-5 bg-light' style={{ height: '100vh'}}>
                 <Link to={'/sign-in'}  className="btn btn-primary" style={{ height: 'fit-content'}} >
-                    Sign In
+                    Login
                 </Link>
                 <Link to={'/sign-up'}  className="btn btn-primary" style={{ height: 'fit-content'}} >
                     Sign Up
