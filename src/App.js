@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Preloader from './Preloader';
 import { Auth } from './providers/Auth';
 import { Hook } from './providers/Hook';
+import { User } from './providers/User';
 
 function App() {
   const Index = React.lazy(() => import('./pages/index/Index'));
@@ -11,40 +12,42 @@ function App() {
   return (
     <Hook>
       <Auth>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <Suspense fallback={<Preloader />}>
-                <Index />
-              </Suspense>
-            }
-          />
+        <User>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <Suspense fallback={<Preloader />}>
+                  <Index />
+                </Suspense>
+              }
+            />
 
-          {/* sign user in starts  */}
-          <Route
-            exact
-            path="/sign-in"
-            element={
-              <Suspense fallback={<Preloader />}>
-                <SignIn />
-              </Suspense>
-            }
-          />
-          {/* sign user in ends  */}
+            {/* sign user in starts  */}
+            <Route
+              exact
+              path="/sign-in"
+              element={
+                <Suspense fallback={<Preloader />}>
+                  <SignIn />
+                </Suspense>
+              }
+            />
+            {/* sign user in ends  */}
 
 
-          <Route
-            exact
-            path="/dashboard"
-            element={
-              <Suspense fallback={<Preloader />}>
-                <Dashboard />
-              </Suspense>
-            }
-          />
-        </Routes>
+            <Route
+              exact
+              path="/dashboard"
+              element={
+                <Suspense fallback={<Preloader />}>
+                  <Dashboard />
+                </Suspense>
+              }
+            />
+          </Routes>
+        </User>
       </Auth>
     </Hook>
   );

@@ -3,7 +3,7 @@ import React, { createContext, useContext } from "react";
 const HookContext = createContext(null);
 
 export const Hook = ({ children }) => {
-    const endpoint = "https://api.thelikey.com"
+    const endpoint = "https://api.thelikey.com";
 
     return (
         <HookContext.Provider value={{ endpoint }}>
